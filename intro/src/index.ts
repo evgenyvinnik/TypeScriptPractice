@@ -1,3 +1,5 @@
+import { isPalindrome as Palindrome } from './utils'
+
 let message: string = "Hello, World from Evgeny!";
 console.log(message);
 
@@ -135,3 +137,21 @@ function logging(value: unknown): void {
 
 logging(23.344);
 logging("Hello");
+
+let leet;
+
+leet = "1337";
+const numberValue = +leet;
+
+console.log(numberValue == 1337);
+console.log(numberValue);
+
+
+console.log(Palindrome('madam'));
+console.log(Palindrome('madan'));
+
+
+console.log('Logged in user ', process.env.USER);
+
+import fs from 'fs';
+fs.writeFileSync('hello.txt', 'Hello world!');

@@ -1,4 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("./utils");
 let message = "Hello, World from Evgeny!";
 console.log(message);
 let flag = false;
@@ -90,3 +95,13 @@ function logging(value) {
 }
 logging(23.344);
 logging("Hello");
+let leet;
+leet = "1337";
+const numberValue = +leet;
+console.log(numberValue == 1337);
+console.log(numberValue);
+console.log(utils_1.isPalindrome('madam'));
+console.log(utils_1.isPalindrome('madan'));
+console.log('Logged in user ', process.env.USER);
+const fs_1 = __importDefault(require("fs"));
+fs_1.default.writeFileSync('hello.txt', 'Hello world!');
