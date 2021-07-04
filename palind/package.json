@@ -1,7 +1,7 @@
 {
   "name": "@evgenyvinnik/palind",
   "version": "1.0.0",
-  "description": "",
+  "description": "Package to return whether string is a palindrome",
   "main": "lib",
   "types": "lib",
   "scripts": {
@@ -9,9 +9,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Evgeny Vinnik",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^4.3.5"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evgenyvinnik/TypeScriptPractice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evgenyvinnik/TypeScriptPractice/issues"
+  },
+  "homepage": "https://github.com/evgenyvinnik/TypeScriptPractice#readme"
 }

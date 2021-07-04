@@ -1,4 +1,5 @@
 import { isPalindrome as Palindrome } from './utils'
+import { isPalindrome as PalindromeNpm } from '@evgenyvinnik/palind'
 
 let message: string = "Hello, World from Evgeny!";
 console.log(message);
@@ -149,6 +150,8 @@ console.log(numberValue);
 
 console.log(Palindrome('madam'));
 console.log(Palindrome('madan'));
+console.log(PalindromeNpm('madam'));
+console.log(PalindromeNpm('madan'));
 
 
 console.log('Logged in user ', process.env.USER);

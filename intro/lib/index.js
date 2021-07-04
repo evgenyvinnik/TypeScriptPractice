@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
+const palind_1 = require("@evgenyvinnik/palind");
 let message = "Hello, World from Evgeny!";
 console.log(message);
 let flag = false;
@@ -102,6 +103,8 @@ console.log(numberValue == 1337);
 console.log(numberValue);
 console.log(utils_1.isPalindrome('madam'));
 console.log(utils_1.isPalindrome('madan'));
+console.log(palind_1.isPalindrome('madam'));
+console.log(palind_1.isPalindrome('madan'));
 console.log('Logged in user ', process.env.USER);
 const fs_1 = __importDefault(require("fs"));
 fs_1.default.writeFileSync('hello.txt', 'Hello world!');
