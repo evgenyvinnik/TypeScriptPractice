@@ -158,3 +158,63 @@ console.log('Logged in user ', process.env.USER);
 
 import fs from 'fs';
 fs.writeFileSync('hello.txt', 'Hello world!');
+
+
+type newPoint = {readonly x: number, readonly y: number}
+
+const varPoint: newPoint = {x: 0, y: 0};
+
+console.log(`varPoint ${varPoint.x} ${varPoint.y}`);
+
+
+class Animalistic {
+  readonly name: string;
+  constructor(name: string) { this.name = name;}
+};
+
+const ani: Animalistic = {name:'sheep'};
+console.log(`animal name ${ani.name} `);
+
+let formatCommandLine = (command: string | string[]) : string => {
+  let line = '';
+  if (typeof command === 'string') {
+    line = command.trim();
+  } else {
+    line = command.map(c => c.trim()).join(' ');
+  }
+  return line;
+}
+
+console.log(formatCommandLine(' message '));
+console.log(formatCommandLine([' name ', ' dilemma']));
+
+type Padding = number | string;
+
+let paddingLeft = (value: string, padding: Padding) => {
+  if (typeof padding === 'number') {
+    return Array(padding + 1).join(' ') + value;
+  } else if (typeof padding === 'string') {
+    return padding + value;
+  }
+
+  throw new Error(`Expected number of string, got '${padding}'`);
+}
+
+
+console.log(paddingLeft(' message ', '         '));
+console.log(paddingLeft(' message ', 10));
+
+type CardinalDirection = 'North' | 'South'
+let direction: CardinalDirection;
+
+direction = 'North';
+direction = 'South';
+
+type DiceValue = 1 | 2 | 3 | 4 | 5 | 6;
+
+let rollDice = (): DiceValue => {
+  return Math.floor(Math.random() * 6) + 1 as DiceValue;
+}
+
+console.log(`roll dice ${rollDice()}`);
+console.log(`roll dice ${rollDice()}`);

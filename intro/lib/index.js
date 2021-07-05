@@ -108,4 +108,44 @@ console.log(palind_1.isPalindrome('madan'));
 console.log('Logged in user ', process.env.USER);
 const fs_1 = __importDefault(require("fs"));
 fs_1.default.writeFileSync('hello.txt', 'Hello world!');
+const varPoint = { x: 0, y: 0 };
+console.log(`varPoint ${varPoint.x} ${varPoint.y}`);
+class Animalistic {
+    name;
+    constructor(name) { this.name = name; }
+}
+;
+const ani = { name: 'sheep' };
+console.log(`animal name ${ani.name} `);
+let formatCommandLine = (command) => {
+    let line = '';
+    if (typeof command === 'string') {
+        line = command.trim();
+    }
+    else {
+        line = command.map(c => c.trim()).join(' ');
+    }
+    return line;
+};
+console.log(formatCommandLine(' message '));
+console.log(formatCommandLine([' name ', ' dilemma']));
+let paddingLeft = (value, padding) => {
+    if (typeof padding === 'number') {
+        return Array(padding + 1).join(' ') + value;
+    }
+    else if (typeof padding === 'string') {
+        return padding + value;
+    }
+    throw new Error(`Expected number of string, got '${padding}'`);
+};
+console.log(paddingLeft(' message ', '         '));
+console.log(paddingLeft(' message ', 10));
+let direction;
+direction = 'North';
+direction = 'South';
+let rollDice = () => {
+    return Math.floor(Math.random() * 6) + 1;
+};
+console.log(`roll dice ${rollDice()}`);
+console.log(`roll dice ${rollDice()}`);
 //# sourceMappingURL=index.js.map
