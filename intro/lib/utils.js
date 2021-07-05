@@ -10,3 +10,4 @@ function isPalindrome(str) {
 exports.isPalindrome = isPalindrome;
 console.log(isPalindrome('madam'));
 console.log(isPalindrome('madan'));
+//# sourceMappingURL=utils.js.map

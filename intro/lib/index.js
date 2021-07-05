@@ -108,3 +108,4 @@ console.log(palind_1.isPalindrome('madan'));
 console.log('Logged in user ', process.env.USER);
 const fs_1 = __importDefault(require("fs"));
 fs_1.default.writeFileSync('hello.txt', 'Hello world!');
+//# sourceMappingURL=index.js.map
