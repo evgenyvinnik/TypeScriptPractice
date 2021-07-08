@@ -218,3 +218,177 @@ let rollDice = (): DiceValue => {
 
 console.log(`roll dice ${rollDice()}`);
 console.log(`roll dice ${rollDice()}`);
+
+class Cat {
+  public meow(): void {
+    console.log('meow');
+  }
+}
+
+class Dog {
+  public bark(): void {
+    console.log('bark');
+  }
+}
+
+type CatoDog = Dog | Cat;
+
+function speak(animal:CatoDog) {
+  if(animal instanceof Cat) {
+    animal.meow();
+  }
+  if (animal instanceof Dog) {
+    animal.bark();
+  }
+}
+
+speak(new Cat());
+speak(new Dog());
+
+type Square = {size: number};
+
+type Rectangle = {width: number, height: number};
+
+type Shape = Rectangle | Square;
+
+function area(shape:Shape) {
+  if('size' in shape) {
+    console.log(shape.size**2);
+  }
+  if('width' in shape) {
+    console.log(shape.width*shape.height);
+  }
+}
+
+area({size: 2});
+area({width: 2, height: 3});
+
+type Circle1 = {radius: number, kind:'circle'};
+
+type Square1 = {size: number, kind:'square'};
+
+type Rectangle1 = {width: number, height: number, kind:'rectangle'};
+
+type Shape1 = Circle1 | Rectangle1 | Square1;
+
+function area1(shape:Shape1) {
+  if(shape.kind === 'circle') {
+    console.log(Math.PI * shape.radius**2);
+  }
+  if(shape.kind === 'square') {
+    console.log(shape.size**2);
+  }
+  if(shape.kind === 'rectangle') {
+    console.log(shape.width*shape.height);
+  }
+}
+
+area1({radius: 2, kind:'circle'});
+area1({size: 5, kind:'square'});
+area1({width:  6, height: 3, kind:'rectangle'});
+
+type isValidationSuccess = {
+  isValid: true;
+  validValue: string;
+}
+
+type isValidationFailure = {
+  isValid: false;
+  errorValue: string;
+}
+
+type ValidationResult =
+| isValidationSuccess
+| isValidationFailure;
+
+function logResult(result:ValidationResult) {
+  if(result.isValid) {
+    console.log("success " + result.validValue);
+  } else {
+    console.log("failure " + result.errorValue);
+  }
+}
+
+logResult({isValid:true, validValue:"bloo"})
+logResult({isValid:false, errorValue:"bla"})
+
+
+class YetAnotherPerson {
+  public name: string;
+  public age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+
+class AnotherPerson {
+  constructor( public readonly name: string, public readonly age: number) {
+  }
+}
+
+
+const adam = new YetAnotherPerson("Adam", 1200);
+console.log(adam.name, adam.age);
+
+const eve = new AnotherPerson("Eve", 123);
+console.log(eve.name, eve.age);
+
+class AnotherPoint {
+  x: number = 0;
+  y: number = 0;
+}
+
+const anotherCenter = new AnotherPoint();
+anotherCenter.x = 2;
+
+console.log(anotherCenter.x, anotherCenter.y);
+
+function logVowels(value: string) {
+  console.log(value.match(/[aeoui]/gi));
+}
+
+logVowels("asdfsa4rerhgp");
+logVowels("3244");
+
+function decorate(value: string | null | undefined) { 
+  if (value == null) {
+    return value;
+  }
+  return `--- ${value.trim()} ---`;
+}
+
+console.log(decorate(null));
+
+console.log(decorate(undefined));
+console.log(decorate("Bsdfwe"));
+
+type YetAnotherPoint2D = {
+  x: number;
+  y: number;
+}
+
+type YetAnotherPoint3D = YetAnotherPoint2D & {z: number}
+
+type Name = {firstName: string, familyName?: string}
+type Email = {email: string}
+type Phone = {phone: string}
+
+function contact(details: Name & Email & Phone) {
+  console.log(`Dear ${details.firstName} ${details.familyName}.
+I hope you have received my message on ${details.email}.
+We will call you on ${details.phone}`);
+}
+
+contact({firstName: "Adam", email:"adam@smith.com", phone: "2345"});
+
+
+contact({firstName: "Adam", familyName: "Jensen", email:"adam@smith.com", phone: "2345"});
+
+class MegaPoint {
+  x?: number;
+  y?: number;
+}
+
+console.log(new MegaPoint());
