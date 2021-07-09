@@ -57,6 +57,17 @@ let point2d = { x: 1, y: 2 };
 let point3d = { x: 2, y: 3, z: 3 };
 point2d = point3d;
 console.log(point2d);
+let point2;
+function initPoint() {
+    point2 = { x: 22, y: 32 };
+}
+initPoint();
+console.log(point2.x, point2.y);
+function betterInitPoint() {
+    return { x: 222, y: 322 };
+}
+let point22 = betterInitPoint();
+console.log(point22.x, point22.y);
 function processPoint2d(point) {
     console.log(point);
 }
@@ -255,4 +266,68 @@ class MegaPoint {
     y;
 }
 console.log(new MegaPoint());
+function sendEmail(email) {
+    console.log('send email to ', email);
+}
+function isContactable(person) {
+    if (person.email == null) {
+        throw new Error(`Person ${person.name} is not contactable`);
+    }
+}
+function contactNew(person) {
+    isContactable(person);
+    sendEmail(person.email);
+}
+contactNew({ name: "Ava", email: "blab" });
+const coordinate3D = { x: 23, y: 456, z: 34566 };
+console.log(coordinate3D);
+function handleRequest(request) {
+    console.log(request.body);
+    console.log(request.json);
+}
+const fail = (message) => {
+    throw new Error(message);
+};
+let example;
+function log123(animal) {
+    console.log(`${animal.name} is doing ${animal.voice()}`);
+}
+class AnotherCat {
+    name;
+    constructor(name) {
+        this.name = name;
+    }
+    voice() {
+        return "meow";
+    }
+}
+class AnotherDog {
+    name;
+    constructor(name) {
+        this.name = name;
+    }
+    voice() {
+        return "woof";
+    }
+}
+log123(new AnotherCat("Kitty"));
+log123(new AnotherDog("Doggy"));
+let anotherDice;
+function rollDiceAgain() {
+    anotherDice = Math.floor(Math.random() * 6) + 1;
+}
+rollDiceAgain();
+console.log("Current dice value", anotherDice);
+class NewPoint {
+    x;
+    y;
+    constructor() {
+        this.moveRandom();
+    }
+    moveRandom() {
+        this.x = Math.random();
+        this.y = Math.random();
+    }
+}
+console.log("new point ", new NewPoint());
 //# sourceMappingURL=index.js.map

@@ -87,6 +87,20 @@ point2d = point3d;
 
 console.log(point2d);
 
+let point2: Point2d;
+function initPoint(){
+  point2 = {x:22, y: 32};
+}
+initPoint();
+console.log(point2!.x, point2!.y)
+
+function betterInitPoint(): Point2d {
+  return {x:222, y: 322};
+}
+
+let point22 = betterInitPoint();
+console.log(point22.x, point22.y)
+
 function processPoint2d(point:Point2d) {
   console.log(point);
 }
@@ -392,3 +406,126 @@ class MegaPoint {
 }
 
 console.log(new MegaPoint());
+
+
+type NewPerson = {
+  name: string;
+  email?: string | null | undefined;
+};
+
+function sendEmail(email: string) {
+  console.log('send email to ', email);
+}
+
+function isContactable(person: NewPerson) {
+  if (person.email == null) {throw new Error(`Person ${person.name} is not contactable`);}
+}
+
+function contactNew(person: NewPerson) {
+  isContactable(person);
+  sendEmail(person.email!);
+}
+
+contactNew({name: "Ava", email: "blab"});
+
+// contactNew({name: "Eve"});
+
+interface Coordinate2D {
+  x: number;
+  y: number;
+}
+
+interface Coordinate3D extends Coordinate2D {
+  z: number
+}
+
+const coordinate3D: Coordinate3D = {x:23, y:456, z:34566};
+
+console.log(coordinate3D);
+
+interface Request {
+  body: any;
+}
+
+interface Request {
+  json: any;
+}
+
+function handleRequest(request:Request) {
+  console.log(request.body);
+  console.log(request.json);
+}
+
+interface InputPrompts {
+  type: 'test' | 'email';
+  value: string;
+  onChange: (newValue: string) => void;
+}
+
+type onChangeType = (newValue: string) => void;
+
+type InputPrompt = {
+  type: 'test' | 'email';
+  value: string;
+  onChange: onChangeType;
+}
+
+const fail = (message: string) => {
+  throw new Error(message);
+}
+
+let example: never;
+
+
+type AnotherAnimal = {
+  name: string;
+  voice(): string;
+}
+
+function log123(animal: AnotherAnimal) {
+  console.log(`${animal.name} is doing ${animal.voice()}`);
+}
+
+class AnotherCat implements AnotherAnimal {
+  constructor(public name: string){}
+  voice(): string {
+    return "meow"
+  }
+  
+}
+
+class AnotherDog implements AnotherAnimal {
+  constructor(public name: string){}
+  voice(): string {
+    return "woof";
+  }
+}
+
+log123(new AnotherCat("Kitty"));
+log123(new AnotherDog("Doggy"));
+
+let anotherDice!: number;
+function rollDiceAgain() {
+  anotherDice = Math.floor(Math.random() * 6) + 1;
+}
+
+rollDiceAgain();
+
+console.log("Current dice value", anotherDice);
+
+
+class NewPoint {
+  x!: number;
+  y!: number;
+
+  constructor(){
+    this.moveRandom();
+  }
+
+  moveRandom(){
+    this.x = Math.random();
+    this.y = Math.random();
+  }
+}
+
+console.log("new point ", new NewPoint());
