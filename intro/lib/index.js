@@ -330,4 +330,90 @@ class NewPoint {
     }
 }
 console.log("new point ", new NewPoint());
+function isSquare(shape) {
+    return 'size' in shape;
+}
+function isRectangle(shape) {
+    return 'width' in shape;
+}
+function anotherArea(shape) {
+    if (isSquare(shape)) {
+        return shape.size ** 2;
+    }
+    if (isRectangle(shape)) {
+        return shape.width * shape.height;
+    }
+    const ensureNever = shape;
+    return ensureNever;
+}
+function assertFunc(condition, message) {
+    if (!condition)
+        throw new Error(message);
+}
+function loadPerson() {
+    if (Math.random() > .1)
+        return { name: "hello", dob: new Date(2021, 12, 8) };
+    return null;
+}
+const maybePreson = loadPerson();
+assertFunc(maybePreson != null, "Could not load person");
+console.log("name ", maybePreson.name);
+function assertDate(value) {
+    if (value instanceof Date)
+        return;
+    else
+        throw new TypeError("value is not a Date");
+}
+assertDate(maybePreson.dob);
+console.log("dob ", maybePreson.dob.toString());
+function anotherReverse(stringArrayOrString) {
+    if (typeof stringArrayOrString == 'string') {
+        return stringArrayOrString.split('').reverse().join('');
+    }
+    else {
+        return stringArrayOrString.slice().reverse();
+    }
+}
+var rev1 = anotherReverse('hello');
+console.log(rev1);
+var rev2 = anotherReverse(['h', 'e', 'l', 'l', 'o']);
+console.log(rev2);
+function makeDate(timestampYear, month, day) {
+    if (month != null && day != null) {
+        return new Date(timestampYear, month - 1, day);
+    }
+    else {
+        return new Date(timestampYear);
+    }
+}
+const doomsDay = makeDate(2000, 1, 1);
+const epoch = makeDate(0);
+const anotherAdd = (a, b) => {
+    return a + b;
+};
+const yetAnotherAdd = (a, b, c) => {
+    return a + b + (c != null ? c : 0);
+};
+yetAnotherAdd.debugName = "hello";
+console.log("yetAnotherAdd", yetAnotherAdd(1, 2));
+console.log("yetAnotherAdd", yetAnotherAdd(1, 2, 3));
+const Plug = class {
+    x;
+    y;
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+};
+// type OtherPointCreator = {
+//   new (x: number, y: number): {x: number, y: number},
+//   test(test:number): number,
+//   (bloo:number): number,
+// }
+// const Plugin: OtherPointCreator = class { 
+//   constructor(public x: number, public y: number) {}
+//   static test = () => {return 3};
+//   bloo = (bloo:number) => {return 3;};
+// }
+// const vars = new Plugin(3, 3);
 //# sourceMappingURL=index.js.map

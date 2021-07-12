@@ -529,3 +529,148 @@ class NewPoint {
 }
 
 console.log("new point ", new NewPoint());
+
+type AnotherSquare = {size: number};
+
+type AnotherRectangle = {width: number, height: number};
+
+type AnotherShape = AnotherRectangle | AnotherSquare;
+
+function isSquare(shape: AnotherShape): shape is AnotherSquare{
+  return 'size' in shape
+}
+
+function isRectangle(shape: AnotherShape): shape is AnotherRectangle{
+  return 'width' in shape
+}
+
+function anotherArea(shape:AnotherShape): number {
+  if(isSquare(shape)) {
+    return shape.size**2;
+  }
+  if(isRectangle(shape)) {
+    return shape.width*shape.height;
+  }
+
+  const ensureNever: never = shape;
+  return ensureNever;
+}
+
+type Peep = {
+  name: string;
+  dob?: Date;
+}
+
+function assertFunc(condition: unknown, message: string): asserts condition {
+  if(!condition)
+    throw new Error(message);
+}
+
+function loadPerson(): Peep | null {
+
+  if(Math.random() > .1)
+    return {name: "hello", dob: new Date(2021, 12, 8)};
+  return null;
+}
+
+const maybePreson  = loadPerson();
+
+assertFunc(maybePreson != null, "Could not load person");
+console.log("name ",  maybePreson.name)
+
+function assertDate(value: unknown): asserts value is Date {
+  if(value instanceof Date) return;
+  else throw new TypeError("value is not a Date");
+}
+
+assertDate(maybePreson.dob);
+console.log("dob ",  maybePreson.dob.toString())
+
+function anotherReverse(stringArrayOrString: string):string;
+function anotherReverse(stringArrayOrString: string[]): string[];
+function anotherReverse(stringArrayOrString: string| string[]){
+  if(typeof stringArrayOrString == 'string') {
+    return stringArrayOrString.split('').reverse().join('');
+  } else {
+    return stringArrayOrString.slice().reverse();
+  }
+}
+
+var rev1 = anotherReverse('hello');
+console.log(rev1);
+var rev2 = anotherReverse(['h', 'e', 'l', 'l', 'o']);
+console.log(rev2);
+
+function makeDate(timestampYear: number,  month: number, day: number): Date;
+function makeDate(timestampYear: number): Date;
+function makeDate(timestampYear: number, month?: number, day?: number): Date {
+  if(month != null && day != null) {
+    return new Date(timestampYear, month-1, day);
+  } else {
+    return new Date(timestampYear);
+  }
+}
+
+const doomsDay = makeDate(2000, 1, 1);
+const epoch = makeDate(0);
+
+// const invalid = makeDate(2000, 1);
+
+type Add = (a: number, b: number) => number;
+
+const anotherAdd: Add = (a: number, b: number) => {
+  return a + b;
+}
+
+// type Sub = {
+//   new (x: number, y: number): {x: number, y: number},
+//   (a: number, b: number): number,
+// }
+
+// const sub: Sub = class {
+//   constructor(public x: number, public y: number) {}
+
+//   public substact = (a: number, b: number, c?: number) => {
+//     return a + b + (c != null ?c:0);
+//   }
+// }
+
+type AnotherAdd = {
+  (a: number, b: number): number,
+  (a: number, b: number, c: number): number,
+  debugName: string
+}
+
+const yetAnotherAdd: AnotherAdd = (a: number, b: number, c?: number) => {
+  return a + b + (c != null ?c:0);
+}
+
+yetAnotherAdd.debugName = "hello";
+
+console.log("yetAnotherAdd", yetAnotherAdd(1, 2))
+console.log("yetAnotherAdd", yetAnotherAdd(1, 2, 3))
+
+
+
+
+type PointCreator = new (x: number, y: number) => {x: number, y: number};
+
+const Plug: PointCreator = class {
+  constructor(public x: number, public y: number) {}
+}
+
+// type OtherPointCreator = {
+//   new (x: number, y: number): {x: number, y: number},
+//   test(test:number): number,
+//   (bloo:number): number,
+// }
+
+// const Plugin: OtherPointCreator = class { 
+//   constructor(public x: number, public y: number) {}
+//   static test = () => {return 3};
+//   bloo = (bloo:number) => {return 3;};
+// }
+
+
+
+// const vars = new Plugin(3, 3);
