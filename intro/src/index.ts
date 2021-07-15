@@ -653,24 +653,11 @@ console.log("yetAnotherAdd", yetAnotherAdd(1, 2, 3))
 
 
 
-type PointCreator = new (x: number, y: number) => {x: number, y: number};
+type AnotherPointCreator = new (x: number, y: number) => {x: number, y: number};
 
-const Plug: PointCreator = class {
+const Plug: AnotherPointCreator = class {
   constructor(public x: number, public y: number) {}
 }
 
-// type OtherPointCreator = {
-//   new (x: number, y: number): {x: number, y: number},
-//   test(test:number): number,
-//   (bloo:number): number,
-// }
 
-// const Plugin: OtherPointCreator = class { 
-//   constructor(public x: number, public y: number) {}
-//   static test = () => {return 3};
-//   bloo = (bloo:number) => {return 3;};
-// }
-
-
-
-// const vars = new Plugin(3, 3);
+abstract class 

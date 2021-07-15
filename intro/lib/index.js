@@ -405,15 +405,6 @@ const Plug = class {
         this.y = y;
     }
 };
-// type OtherPointCreator = {
-//   new (x: number, y: number): {x: number, y: number},
-//   test(test:number): number,
-//   (bloo:number): number,
-// }
-// const Plugin: OtherPointCreator = class { 
-//   constructor(public x: number, public y: number) {}
-//   static test = () => {return 3};
-//   bloo = (bloo:number) => {return 3;};
-// }
-// const vars = new Plugin(3, 3);
+class {
+}
 //# sourceMappingURL=index.js.map
