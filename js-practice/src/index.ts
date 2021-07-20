@@ -54,3 +54,48 @@ class Person extends Human {
 
 let person = new Person("Vas");
 console.log(person);
+
+const numbers: number[] = [23, 234, 34, 3];
+const newNumbers: number[] = [3, 3, 5, 6];
+
+console.log([numbers, 1, 2, 4]);
+
+console.log([...numbers, 3, 1, 2, 4]);
+
+console.log([...numbers, ...newNumbers]);
+
+const peep = {
+  name: "test",
+};
+
+const dude = {
+  name: "Dude",
+};
+
+const agedDude = {
+  ...dude,
+  age: 30,
+};
+
+console.log(agedDude);
+
+const funcFilter = (...args: number[]) => {
+  return args.filter((el) => el <= 3);
+};
+
+console.log(funcFilter(2, 3, 4, 1, 0));
+
+const [a, b] = ["Hello", "dude"];
+console.log(b);
+
+const { age } = agedDude;
+console.log("age", age);
+
+
+const nums = [1, 2, 3];
+
+const numsDouble = nums.map(x => x*2);
+console.log(numsDouble);
+
+const numsTriple = nums.forEach(x => x*3);
+console.log(numsTriple);
