@@ -91,11 +91,10 @@ console.log(b);
 const { age } = agedDude;
 console.log("age", age);
 
-
 const nums = [1, 2, 3];
 
-const numsDouble = nums.map(x => x*2);
+const numsDouble = nums.map((x) => x * 2);
 console.log(numsDouble);
 
-const numsTriple = nums.forEach(x => x*3);
+const numsTriple = nums.forEach((x) => x * 3);
 console.log(numsTriple);
